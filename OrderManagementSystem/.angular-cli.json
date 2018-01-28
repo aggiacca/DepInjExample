@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "web-example"
+    "name": "order-management-system"
   },
   "apps": [
     {
@@ -23,7 +23,10 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js"
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/popper.js/dist/popper.js",
+        "../node_modules/popper.js/dist/popper-utils.js",
+        "../node_modules/bootstrap/dist/bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
