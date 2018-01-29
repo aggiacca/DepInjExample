@@ -1,0 +1,80 @@
+<h1 class="page-header">Orders</h1>
+
+<p>Top orders:</p>
+<div class="row">
+<div *ngFor="let order of orders" class="card border-primary bg-light mb-3" style="width: 13rem;margin-right:10px">
+  <h5 class="card-header">{{order.name}}</h5>
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">Notes</h6>
+    <p class="card-text">Notes here</p>
+  </div>
+
+  <div class="card-header">Products</div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let orderuct of order.orderucts">{{orderuct.name}}</li>
+  </ul>
+</div>
+</div>
+
+
+<div class="row" *ngIf="!adding && !editing">
+  <button type="button" class="btn btn-success" (click)="flipAddOrderStatus()">+</button>
+</div>
+
+<div class="row">
+  <form *ngIf="adding">
+    <div class="form-group row">
+      <label for="name" class="col-sm-4 col-form-label">Name</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="newOrder.name" class="form-control" id="name" name="orderName" placeholder="Name..."  />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="notes" class="col-sm-4 col-form-label">Notes</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="newOrder.description" class="form-control" id="notes"  name="orderNotes" placeholder="Notes..." >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="price" class="col-sm-4 col-form-label">Name</label>
+      <div class="col-sm-8">
+        <input type="number"  [(ngModel)]="newOrder.price" class="form-control" id="price"  name="orderPrice" placeholder="Price..." >
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="button" class="btn btn-primary" (click)="addOrder(newOrder)">Add Product</button>
+        <button type="button" class="btn btn-warning" (click)="flipAddOrderStatus()">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <!--Editing form-->
+  <form *ngIf="editing">
+    <div class="form-group row">
+      <label for="name2" class="col-sm-4 col-form-label">Name</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="eOrder.name" class="form-control" id="name2" name="orderName" placeholder="Name..."  />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="description2" class="col-sm-4 col-form-label">Description</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="eOrder.description" class="form-control" id="description2"  name="orderDes" placeholder="Description..." >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="price2" class="col-sm-4 col-form-label">Name</label>
+      <div class="col-sm-8">
+        <input type="number"  [(ngModel)]="eOrder.price" class="form-control" id="price2"  name="orderPrice" placeholder="Price..." >
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="button" class="btn btn-primary" (click)="editOrder(eOrder)">Confirm Edit</button>
+        <button type="button" class="btn btn-warning" (click)="flipEditOrderStatus()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
