@@ -42,6 +42,7 @@ export class ProductsComponent implements OnInit {
   editProd(product: Product) {
     this.pService.updateProduct(product);
     this.refreshProducts();
+    this.editing = !this.editing
   }
 
   flipAddProdStatus() {
